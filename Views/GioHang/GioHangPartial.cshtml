@@ -1,0 +1,15 @@
+﻿
+@model  Trang_web_ban_dien_thoai.Models.GioHang
+<div class="col-md-4">
+    <div id="cart">
+        <a class="btn btn-1" href="@Url.Action("GioHang","GioHang")">
+            </span>Gio Hang: @ViewBag.TongSoLuong
+            <span class="glyphicon glyphicon-shopping-cart">
+
+            </span> @string.Format("{0:#,0} VNĐ", ViewBag.TongTien)
+        </a>
+    </div>
+</div>
+
+
+

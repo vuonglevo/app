@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Trang_web_ban_dien_thoai.Models.DonHang>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Đơn hàng</h2>
+
+<div class="btn btn-info">
+    @Html.ActionLink("Create New", "Create")
+</div>
+   
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayDat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayGiao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThaiDatHang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThaiThanhToan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KhachHang.TenKH)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayDat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayGiao)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiDatHang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiThanhToan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KhachHang.TenKH)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idDonHang }, new { @class = "btn btn-primary" })
+            @Html.ActionLink("Details", "Details", new { id=item.idDonHang }, new { @class = "btn btn-info" })
+            @Html.ActionLink("Delete", "Delete", new { id=item.idDonHang }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

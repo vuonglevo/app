@@ -1,0 +1,94 @@
+﻿@model IEnumerable<Trang_web_ban_dien_thoai.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Sản phẩm</h2>
+
+<div class="btn btn-info">
+    @Html.ActionLink("Create New", "Create")
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CauHinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.HinhChinh)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoLuongDaBan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LuotView)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TinhTrang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Danhgia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Soluong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoaiSanPham)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NhaSanXuat.TenNhaSanXuat)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CauHinh)
+        </td>
+        <td>
+            <img src="~/Asset/images/@item.HinhChinh" style="max-width:100px;max-height:100px"/>
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoLuongDaBan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LuotView)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TinhTrang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Danhgia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soluong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSanPham)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NhaSanXuat.TenNhaSanXuat)
+        </td>
+        <td style="display:flex">
+            @Html.ActionLink("Edit", "Edit", new { id = item.MaSanPham }, new { @class = "btn btn-primary" }) 
+            @Html.ActionLink("Details", "Details", new { id = item.MaSanPham }, new { @class = "btn btn-info" }) 
+            @Html.ActionLink("Delete", "Delete", new { id = item.MaSanPham }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,58 @@
+﻿@model PagedList.IPagedList<Trang_web_ban_dien_thoai.Models.SanPham>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <div class="heading">
+            <h2>SẢN PHẨM ĐẶC TRƯNG</h2>
+        </div>
+        <div class="dropdown" style="font-size: 30px" >
+            <a data-toggle="dropdown" href="">Nhãn hiệu<span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Nhanhieu", "Shop", new { idnhanhieu = 1 })">Iphone</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Nhanhieu", "Shop", new { idnhanhieu = 2 })">Samsung</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="@Url.Action("Nhanhieu", "Shop", new { idnhanhieu = 3 })">Oppo</a></li>
+                </ul>
+        </div>
+
+        <div class="products">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                    <div class="product">
+                        <div class="image"><a href="@Url.Action("Details","Shop", new { id = item.MaSanPham})"><img src="~/Asset/images/@item.HinhChinh" style="max-width: 160px" /></a></div>
+                        <div class="buttons">
+                            <a class="btn cart" href="@Url.Action("ThemGioHang", "GioHang", new { ms = item.MaSanPham, url = Request.Url.ToString() })"><span class="glyphicon glyphicon-shopping-cart"></span></a>
+                        </div>
+                        <div class="caption">
+                            <div class="name"><h3><a href="product.html">@item.TenSanPham</a></h3></div>
+                            <div class="price">@item.Gia VND</div>
+                            <div class="rating"></div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div style="text-align: right;">
+            <strong>Trang @(Model.PageCount<Model.PageNumber ? 0:Model.PageNumber)/  @Model.PageCount</strong>
+        </div>
+        <br />
+        <div class="MenuTrang">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+        </div>
+        <style>
+            .MenuTrang {
+                display: inline;
+                text-align: center;
+            }
+        </style>
+    </div>
+</div>
